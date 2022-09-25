@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "939390414268",
+    "project_id": "health-point-89cfe",
+    "storage_bucket": "health-point-89cfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939390414268:android:8742eb95cb2232b1e5cfb9",
+        "android_client_info": {
+          "package_name": "com.example.healthpoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939390414268-bti6flaf55l3rfmij77b7nrqc4jqjmiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzgdmI_Q5E3JPa5wa2PdTB-zEgmPN66ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939390414268-bti6flaf55l3rfmij77b7nrqc4jqjmiv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
