@@ -28,12 +28,6 @@ public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_list,parent, false);
         RemedioViewHolder remedioViewHolder = new RemedioViewHolder(view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Campos em branco" , Toast.LENGTH_LONG).show();
-            }
-        });
         return remedioViewHolder;
     }
 

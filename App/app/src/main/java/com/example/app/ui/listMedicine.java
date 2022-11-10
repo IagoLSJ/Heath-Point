@@ -30,7 +30,7 @@ public class listMedicine extends AppCompatActivity {
         getSupportActionBar().hide();
         list = (RecyclerView) findViewById(R.id.ListRemedios);
         remedios = new ArrayList<Remedio>();
-        remedios = dao.list();
+        remedios = (ArrayList<Remedio>) dao.list();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         list.setLayoutManager(layoutManager);
         adpter = new RemedioAdpter(remedios);
