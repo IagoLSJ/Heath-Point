@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.app.ui.AddDroug;
 import com.example.app.ui.TelaInicial;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -31,7 +32,7 @@ public class Homeuser extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Homeuser.class));
                         break;
                     case R.id.addId:
-                        startActivity(new Intent(getApplicationContext(), TelaInicial.AddDrug.class));
+                        startActivity(new Intent(getApplicationContext(), AddDroug.class));
                         break;
                     case R.id.searchId:
                         startActivity(new Intent(getApplicationContext(), Homeuser.class));

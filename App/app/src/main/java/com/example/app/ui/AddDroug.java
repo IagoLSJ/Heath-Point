@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,17 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.app.ui.AddDroug;
+import com.example.app.Homeuser;
+import com.example.app.PerfilannyUser;
+import com.example.app.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class PerfilannyUser extends AppCompatActivity {
-
+public class AddDroug extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfilanny_user);
+        setContentView(R.layout.activity_add_drug);
         menu();
+
     }
 
     public void menu() {
@@ -30,7 +32,7 @@ public class PerfilannyUser extends AppCompatActivity {
                     case R.id.homeId:
                         startActivity(new Intent(getApplicationContext(), Homeuser.class));
                         break;
-                    case R.id.addId:
+                    case R.id.addId :
                         startActivity(new Intent(getApplicationContext(), AddDroug.class));
                         break;
                     case R.id.searchId:
