@@ -19,14 +19,14 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
-            android:name=".ui.Login"
+            android:name=".ui.Loginacess"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".ui.Loginacess"
             android:exported="false">
@@ -36,7 +36,7 @@
         </activity>
 
         <activity
-            android:name=".ui.Logincadastro"
+            android:name=".ui.TelaInicial"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -44,7 +44,7 @@
         </activity>
 
         <activity
-            android:name=".ui.Configuracao"
+            android:name=".ui.Logincadastro"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

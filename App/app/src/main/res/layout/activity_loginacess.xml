@@ -65,7 +65,8 @@
         android:ems="10"
         android:fontFamily="@font/ur"
         android:inputType="textEmailAddress"
-        android:text="  E-mail"
+        android:hint="Email"
+        android:textColorHint="@color/white"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +83,8 @@
         android:ems="10"
         android:fontFamily="@font/ur"
         android:inputType="textPassword"
-        android:text="Senha"
+        android:hint="Senha"
+        android:textColorHint="@color/white"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,4 +107,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.714" />
 
+    <TextView
+        android:id="@+id/msgError"
+        android:layout_width="331dp"
+        android:layout_height="20dp"
+        android:background="#ECBB0C"
+        android:text="Email/Senha invvalido"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/buttonentrar">
+
+    </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
