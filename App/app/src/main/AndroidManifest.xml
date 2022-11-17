@@ -27,7 +27,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddDrug"
+            android:name=".ui.TelaInicial$AddDrug"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -70,13 +70,6 @@
         </activity>
         <activity
             android:name=".ui.CreateMedicine"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.Loginacess"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

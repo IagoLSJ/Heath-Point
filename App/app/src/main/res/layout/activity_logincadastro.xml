@@ -51,8 +51,9 @@
         android:background="@drawable/rectangle123"
         android:ems="10"
         android:fontFamily="@font/ur"
+        android:hint="   Nome"
         android:inputType="textPersonName"
-        android:hint="  Nome"
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +69,9 @@
         android:background="@drawable/rectangle123"
         android:ems="10"
         android:fontFamily="@font/ur"
+        android:hint="CPF"
         android:inputType="number"
-        android:hint="  CPF"
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,14 +81,15 @@
         app:layout_constraintVertical_bias="0.055" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/editTextTextEmailAddress"
         android:layout_width="351dp"
         android:layout_height="65dp"
         android:background="@drawable/rectangle123"
         android:ems="10"
         android:fontFamily="@font/ur"
+        android:hint="Email"
         android:inputType="textEmailAddress"
-        android:hint="  Email"
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,20 +99,21 @@
         app:layout_constraintVertical_bias="0.067" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/editTextTextPassword"
         android:layout_width="351dp"
         android:layout_height="65dp"
         android:background="@drawable/rectangle123"
         android:ems="10"
         android:fontFamily="@font/ur"
+        android:hint="senha"
         android:inputType="textPassword"
-        android:hint="Senha"
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
         app:layout_constraintVertical_bias="0.086" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -119,10 +123,23 @@
         android:background="@drawable/componentcadastrar"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonjatem"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintTop_toBottomOf="@+id/caregiver"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Switch
+        android:id="@+id/caregiver"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:text="Sou um coidador"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttocadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
