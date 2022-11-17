@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/telahome"
-    tools:context=".Homeuser">
+    android:background="@drawable/backgrayrectangle"
+    tools:context=".Addpacient">
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imageView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,20 +20,57 @@
         app:srcCompat="@drawable/logodentro" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonconf"
+        android:id="@+id/buttonconfaddpacient"
         android:layout_width="32dp"
         android:layout_height="12dp"
         android:background="@drawable/butconfcomp19"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.063" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="336dp"
+        android:layout_height="416dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/intobackpacientes" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:background="@drawable/backtextperfil"
+        android:fontFamily="@font/ur"
+        android:hint="  Nome"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView19"
+        app:layout_constraintEnd_toEndOf="@+id/imageView19"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="@+id/imageView19"
+        app:layout_constraintTop_toTopOf="@+id/imageView19"
+        app:layout_constraintVertical_bias="0.157" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonhouse"
+        android:id="@+id/buttonaddpacientes"
+        android:layout_width="107dp"
+        android:layout_height="29dp"
+        android:background="@drawable/butonaddinto"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView19"
+        app:layout_constraintEnd_toEndOf="@+id/imageView19"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="@+id/imageView19"
+        app:layout_constraintTop_toTopOf="@+id/imageView19"
+        app:layout_constraintVertical_bias="0.961" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonhouseaddpacient"
         android:layout_width="40dp"
         android:layout_height="34dp"
         android:background="@drawable/house"
@@ -46,7 +83,7 @@
         app:layout_constraintVertical_bias="0.975" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonmais"
+        android:id="@+id/buttonmaisaddpacient"
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:background="@drawable/mais"
@@ -59,7 +96,7 @@
         app:layout_constraintVertical_bias="0.969" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonpesquisar"
+        android:id="@+id/buttonpesquisaraddpacient"
         android:layout_width="31dp"
         android:layout_height="31dp"
         android:background="@drawable/pesquisar"
@@ -72,7 +109,7 @@
         app:layout_constraintVertical_bias="0.972" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonperfil"
+        android:id="@+id/buttonperfiladdpacient"
         android:layout_width="36dp"
         android:layout_height="35dp"
         android:background="@drawable/perfil"

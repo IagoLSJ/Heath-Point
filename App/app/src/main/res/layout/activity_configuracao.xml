@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/telahome"
-    tools:context=".Homeuser">
+    android:background="@drawable/backdaconf"
+    tools:context=".Configuracao">
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,68 +20,52 @@
         app:srcCompat="@drawable/logodentro" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonconf"
+        android:id="@+id/buttonconfconf"
         android:layout_width="32dp"
         android:layout_height="12dp"
         android:background="@drawable/butconfcomp19"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.059" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonhouse"
-        android:layout_width="40dp"
-        android:layout_height="34dp"
-        android:background="@drawable/house"
+        android:id="@+id/sobrenos"
+        android:layout_width="323dp"
+        android:layout_height="23dp"
+        android:background="@drawable/sobrenos"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="0.257" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonmais"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:background="@drawable/mais"
+        android:id="@+id/suporte"
+        android:layout_width="323dp"
+        android:layout_height="23dp"
+        android:background="@drawable/suporte"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969" />
+        app:layout_constraintVertical_bias="0.346" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonpesquisar"
-        android:layout_width="31dp"
-        android:layout_height="31dp"
-        android:background="@drawable/pesquisar"
+        android:id="@+id/deslogar"
+        android:layout_width="323dp"
+        android:layout_height="57dp"
+        android:background="@drawable/deslogar"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.632"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonperfil"
-        android:layout_width="36dp"
-        android:layout_height="35dp"
-        android:background="@drawable/perfil"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="0.932" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
