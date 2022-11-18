@@ -9,16 +9,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.DAO.RemedioDAO;
+
 import com.example.app.R;
 
 import java.util.ArrayList;
 
 public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
-    private ArrayList<Remedio> remedios;
+    private ArrayList<Card> remedios;
 
 
-    public RemedioAdpter(  ArrayList<Remedio> remedios) {
+    public RemedioAdpter(  ArrayList<Card> remedios) {
         this.remedios = remedios;
     }
 
@@ -33,10 +33,8 @@ public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RemedioViewHolder holder, int position) {
-        Remedio remedio = remedios.get(position);
-        holder.nome.setText(remedio.getNome());
-        holder.descricao.setText(remedio.getDescricao());
-        holder.hora.setText(remedio.getEntervaloEmHoras());
+        Card remedio = remedios.get(position);
+
     }
 
     @Override

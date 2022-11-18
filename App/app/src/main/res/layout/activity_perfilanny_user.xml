@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgrayrectangle"
+    android:background="#244261"
     tools:context=".PerfilannyUser">
 
     <ImageView
@@ -42,13 +42,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/intobackperfilpng" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <TextView
         android:id="@+id/textInputEditText"
         android:layout_width="290dp"
         android:layout_height="30dp"
         android:background="@drawable/backtextperfil"
         android:hint="  Nome"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
         app:layout_constraintHorizontal_bias="0.478"
@@ -56,7 +57,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView16"
         app:layout_constraintVertical_bias="0.176" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextNumber2"
         android:layout_width="290dp"
         android:layout_height="30dp"
@@ -65,6 +66,7 @@
         android:hint="  000.000.000-00"
         android:inputType="number"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
         app:layout_constraintHorizontal_bias="0.478"
@@ -72,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
         app:layout_constraintVertical_bias="0.065" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextEmailAddress3"
         android:layout_width="290dp"
         android:layout_height="30dp"
@@ -81,6 +83,7 @@
         android:hint="  Email"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
         app:layout_constraintHorizontal_bias="0.478"

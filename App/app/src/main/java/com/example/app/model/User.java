@@ -3,12 +3,12 @@ package com.example.app.model;
 public class User {
     private final String uuid;
     private final String nome;
-    private final long cpf;
+    private final String cpf;
     private final String email;
     private final String password;
     private final  boolean isCaregiver;
 
-    public User(String uuid, String nome, long cpf, String email, String password, boolean isCaregiver) {
+    public User(String uuid, String nome, String cpf, String email, String password, boolean isCaregiver) {
         this.uuid = uuid;
         this.nome = nome;
         this.cpf = cpf;
@@ -25,7 +25,7 @@ public class User {
         return nome;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
