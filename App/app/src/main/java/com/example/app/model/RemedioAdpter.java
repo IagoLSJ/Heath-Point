@@ -15,10 +15,10 @@ import com.example.app.R;
 import java.util.ArrayList;
 
 public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
-    private ArrayList<Card> remedios;
+    private ArrayList<Remedio> remedios;
 
 
-    public RemedioAdpter(  ArrayList<Card> remedios) {
+    public RemedioAdpter(  ArrayList<Remedio> remedios) {
         this.remedios = remedios;
     }
 
@@ -33,7 +33,8 @@ public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RemedioViewHolder holder, int position) {
-        Card remedio = remedios.get(position);
+        Remedio remedio = remedios.get(position);
+
 
     }
 

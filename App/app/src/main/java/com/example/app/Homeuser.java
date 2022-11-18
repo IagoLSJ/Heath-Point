@@ -69,7 +69,7 @@ public class Homeuser extends AppCompatActivity {
         remedios.add(new Remedio(userId, "Teste", "qualquer coisa", "8:00", "10"));
         Card card = new Card("Segunda", remedios);
         ArrayList<Card> cards = new ArrayList<>();
-        adpter = new RemedioAdpter(cards);
+        adpter = new RemedioAdpter(remedios);
         list.setAdapter(adpter);
 
         btnCuidador.setOnClickListener(new View.OnClickListener() {
