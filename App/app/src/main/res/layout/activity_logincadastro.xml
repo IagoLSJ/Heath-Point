@@ -69,7 +69,7 @@
         android:background="@drawable/rectangle123"
         android:ems="10"
         android:fontFamily="@font/ur"
-        android:hint="CPF"
+        android:hint="  CPF"
         android:inputType="number"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -87,7 +87,7 @@
         android:background="@drawable/rectangle123"
         android:ems="10"
         android:fontFamily="@font/ur"
-        android:hint="Email"
+        android:hint="  Email"
         android:inputType="textEmailAddress"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -120,6 +120,7 @@
         android:id="@+id/buttocadastrar"
         android:layout_width="333dp"
         android:layout_height="57dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/componentcadastrar"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -127,14 +128,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/caregiver"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Switch
         android:id="@+id/caregiver"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:text="Sou um coidador"
+        android:text="Sou um cuidador"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/buttocadastrar"
         app:layout_constraintEnd_toEndOf="parent"
