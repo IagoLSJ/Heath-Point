@@ -51,7 +51,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           
-        run: ./App/gradlew build sonarqube --info --scan
+        run: ./gradlew build sonarqube --info
     
   gradle:
     strategy:
