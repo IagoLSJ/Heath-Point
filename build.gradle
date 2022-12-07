@@ -5,26 +5,14 @@
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/7.4.2/samples
  */
  
- buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
-  }
-  dependencies {
-    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.5.0.2730"
-  }
-}
 
  
- plugins {
+plugins {
     id 'org.sonarqube' version '3.4.0.2513'
 }
 
-sonarqube {
+sonar {
   properties {
     property 'sonar.projectKey', 'teste'
   }
 }
-
-apply plugin: "org.sonarqube"
