@@ -29,7 +29,7 @@ jobs:
         with:
           arguments: build
           build-root-directory: ./App
-          gradle-executable: ./App
+          gradle-executable: ./App/gradlew
           
       - uses: actions/checkout@v2
         with:
