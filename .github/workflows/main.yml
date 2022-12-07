@@ -29,7 +29,6 @@ jobs:
         with:
           arguments: build
           build-root-directory: ./App
-          gradle-executable: ./App
           
       - uses: actions/checkout@v2
         with:
