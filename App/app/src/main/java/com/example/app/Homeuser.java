@@ -48,18 +48,19 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
      RecyclerView seg, ter,qua,qui,sex,sab,dom;
      RemedioAdpter adpter;
      Button btnCuidador;
-     RemedioDAO dao;
+     RemedioDAOInterface dao;
     static RemedioAdpter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeuser);
         getSupportActionBar().hide();
-        dao = RemedioDAO.getInstance();
+        dao = RemedioDAOInterface.getInstance(this);
         ArrayList<Remedio> remedios = new ArrayList<Remedio>();
         dao.init();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         User user = new User();
+        remedios = dao.getListaRemedios();
         remedios.add(new Remedio("fnoiewnfoiwnfoenfowneonfownf", "Teste", "remedio pra rato", "12","segunda"));
 
         seg = (RecyclerView) findViewById(R.id.seg);
