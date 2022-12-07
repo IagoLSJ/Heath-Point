@@ -17,7 +17,7 @@ public interface RemedioDAOInterface {
 
     Remedio getRemedio( String remedioId);
 
-    ArrayList<Remedio> getListaRemedios();
+    ArrayList<Remedio> getListaRemedios(String userId, String dia);
 
     boolean deleteAll();
 

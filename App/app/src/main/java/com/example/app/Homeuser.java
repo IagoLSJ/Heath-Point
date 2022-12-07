@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,23 +47,19 @@ import java.util.concurrent.ExecutionException;
 
 public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
      RecyclerView seg, ter,qua,qui,sex,sab,dom;
-     RemedioAdpter adpter;
      Button btnCuidador;
      RemedioDAOInterface dao;
+     ArrayList<Remedio> remedios = new ArrayList<>();
     static RemedioAdpter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeuser);
         getSupportActionBar().hide();
-        dao = RemedioDAOInterface.getInstance(this);
-        ArrayList<Remedio> remedios = new ArrayList<Remedio>();
+        dao = RemedioDAO.getInstance(this);
         dao.init();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         User user = new User();
-        remedios = dao.getListaRemedios();
-        remedios.add(new Remedio("fnoiewnfoiwnfoenfowneonfownf", "Teste", "remedio pra rato", "12","segunda"));
-
         seg = (RecyclerView) findViewById(R.id.seg);
         ter = (RecyclerView) findViewById(R.id.ter);
         qua = (RecyclerView) findViewById(R.id.qua);
@@ -80,57 +77,26 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
         sab.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         dom.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         menu();
-        adpter = new RemedioAdpter(remedios);
-        seg.setAdapter(adpter);
-        ter.setAdapter(adpter);
-        qua.setAdapter(adpter);
-        qui.setAdapter(adpter);
-        sex.setAdapter(adpter);
-        sab.setAdapter(adpter);
-        dom.setAdapter(adpter);
+        remedios = dao.getListaRemedios(userId, "Segunda");
+        adapter = new RemedioAdpter(remedios);
+        seg.setAdapter(adapter);
+        ter.setAdapter(adapter);
+        qua.setAdapter(adapter);
+        qui.setAdapter(adapter);
+        sex.setAdapter(adapter);
+        sab.setAdapter(adapter);
+        dom.setAdapter(adapter);
 
         btnCuidador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Chat.class));
+//                startActivity(new Intent(getApplicationContext(), .class));
             }
         });
     }
+
     public static void notifyAdapter(){
         adapter.notifyDataSetChanged();
-    }
-    public void Idosos(String userId){
-        final String[] cpfCuidador = new String[1];
-       FirebaseFirestore.getInstance().collection("users").whereEqualTo("userId", userId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-           @Override
-           public void onComplete(@NonNull Task<QuerySnapshot> task) {
-               for (QueryDocumentSnapshot document : task.getResult()) {
-                   if (document.getBoolean("isCaregiver")){
-                       cpfCuidador[0] = document.getString("cpf");
-                   }
-               }
-           }
-       });
-//        final String[] cpfIdosos = new String[50];
-//        FirebaseFirestore.getInstance().collection("takeCare").whereEqualTo("cpfCuidador", cpfCuidador[0])
-//                        .get()
-//                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                                    @Override
-//                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                                        if (task.isSuccessful()) {
-//                                            int i =0;
-//                                            for ( for (QueryDocumentSnapshot document : task.getResult()){
-//                                                cpfIdosos[i] = document.getString("cpfIdoso");
-//                                                i++;
-//                                            }
-//                                        }
-//                                    }
-//                                });
-//        nomes.setOnItemSelectedListener(this);
-//        String[] items;
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, items);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        nomes.setAdapter(adapter);
     }
     public void menu() {
         BottomNavigationView menu;
@@ -140,13 +106,11 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.homeId:
+                    case R.id.searchId:
                         startActivity(new Intent(getApplicationContext(), Homeuser.class));
                         break;
                     case R.id.addId:
                         startActivity(new Intent(getApplicationContext(), AddDroug.class));
-                        break;
-                    case R.id.searchId:
-                        startActivity(new Intent(getApplicationContext(), Homeuser.class));
                         break;
                     case R.id.profileId:
                         startActivity(new Intent(getApplicationContext(), PerfilannyUser.class));

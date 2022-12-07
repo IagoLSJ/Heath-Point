@@ -27,7 +27,7 @@ public class RemedioDAO implements RemedioDAOInterface{
         lista = new ArrayList<>();
     }
 
-    public static RemedioDAO getInstance() {
+    public static RemedioDAO getInstance(Homeuser home) {
 
         if( dao == null ){
             dao = new RemedioDAO(home);
@@ -80,10 +80,12 @@ public class RemedioDAO implements RemedioDAOInterface{
     }
 
     @Override
-    public ArrayList<Remedio> getListaRemedios() {
+    public ArrayList<Remedio> getListaRemedios(String userId, String dia) {
         ArrayList<Remedio> remedios = new ArrayList<Remedio>();
 
         db.collection("medicine")
+                .whereEqualTo("userId", userId)
+                .whereEqualTo("dia", dia)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -94,7 +96,7 @@ public class RemedioDAO implements RemedioDAOInterface{
 
                                 String nome = document.getString( "nome");
                                 String descricao = document.getString( "descricao" );
-                                String hora = document.getString( "hora" );
+                                String hora = document.getString( "horario" );
                                 String dia = document.getString( "dia" );
                                 String userId = document.getString( "userId" );
 
@@ -103,10 +105,8 @@ public class RemedioDAO implements RemedioDAOInterface{
                                 remedios.add(r);
 
                             }
-                        } else {
-                            System.out.println("Erro na consulta");
                         }
-                        Homeuser.notifyAdapter();
+                        home.notifyAdapter();
                     }
                 });
         return remedios;

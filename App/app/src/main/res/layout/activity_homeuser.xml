@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -243,18 +243,6 @@
         app:layout_constraintVertical_bias="0.024"
         app:srcCompat="@drawable/logodentro" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonconf"
-        android:layout_width="32dp"
-        android:layout_height="12dp"
-        android:background="@drawable/butconfcomp19"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCuidador"
