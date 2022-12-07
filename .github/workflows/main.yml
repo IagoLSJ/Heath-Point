@@ -28,7 +28,8 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: build
-          build-root-directory: /App
+          build-root-directory: ./App
+          gradle-executable: ./App
           
       - uses: actions/checkout@v2
         with:
