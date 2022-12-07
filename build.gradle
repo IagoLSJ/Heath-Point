@@ -4,3 +4,22 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/7.4.2/samples
  */
+
+buildscript {
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.14'
+        classpath 'com.android.tools.build:gradle:7.3.1'
+
+    }
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '7.3.1' apply false
+    id 'com.android.library' version '7.3.1' apply false
+    id "org.sonarqube" version "3.4.0.2513"
+}
+
+sonarqube {
+  properties {
+    property 'sonar.projectKey', 'teste'
+  }
+}
