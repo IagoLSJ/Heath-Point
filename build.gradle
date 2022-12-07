@@ -27,3 +27,4 @@ sonarqube {
   }
 }
 
+apply plugin: "org.sonarqube"
