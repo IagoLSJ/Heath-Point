@@ -13,7 +13,6 @@ plugins {
 
 sonarqube {
   properties {
-    property 'sonar.projectKey', 'teste',
-    property 'systemProp.sonar.host.url', 'http://localhost:9000'
+    property 'sonar.projectKey', 'teste'
   }
 }
