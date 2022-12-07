@@ -4,6 +4,7 @@ import static com.google.android.gms.tasks.Tasks.await;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.ArraySet;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,26 +47,22 @@ import java.util.concurrent.ExecutionException;
 public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
      RecyclerView seg, ter,qua,qui,sex,sab,dom;
      RemedioAdpter adpter;
-     ArrayList<Remedio> remedios = new ArrayList<Remedio>();
      Button btnCuidador;
      RemedioDAO dao;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeuser);
         getSupportActionBar().hide();
         dao = RemedioDAO.getInstance();
+        ArrayList<Remedio> remedios = new ArrayList<Remedio>();
         dao.init();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         User user = new User();
         FirebaseFirestore.getInstance().collection("medicine")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
-                    public void onComplete( Task<QuerySnapshot> task ) {
+                    public void onComplete(Task<QuerySnapshot> task ) {
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
