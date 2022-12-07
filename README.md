@@ -17,5 +17,7 @@
 <https://docs.google.com/document/d/1dgOlpCEGrOTQw9qN4V9EMwcA675rRJ6WiCm1nJeaWAk/edit?usp=sharing>
 ### Plano de Medição
 <https://docs.google.com/document/d/1kdfBVNO0xg8btfNCiKnAuNNdOoGLYjkV6nAsKCU7ox8/edit?usp=sharing>
+### Execução do Plano de Medição
+<https://docs.google.com/document/d/1TiaIaopVTnh2ChJQO4OsBceqRsx4Xn6EJFFuKv0Gjvs/edit>
 
 
