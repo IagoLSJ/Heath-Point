@@ -10,7 +10,7 @@
 }
 
 
-
+@CacheableTask  
 sonarqube {
   properties {
     property 'sonar.projectKey', 'teste'
