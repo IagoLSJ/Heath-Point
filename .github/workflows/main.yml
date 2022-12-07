@@ -16,7 +16,7 @@ jobs:
         
         #stages
       - name: Unit Test
-        run: ./gradlew testDebugUnitTest
+        run: ./gradlew android
 
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
