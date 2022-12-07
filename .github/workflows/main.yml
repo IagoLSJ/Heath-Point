@@ -12,11 +12,11 @@ jobs:
           java-version: '17'
 
       - name: Change wrapper permissions
-        run: chmod +x ./App/gradlew
+        run: chmod +x ./gradlew
         
         #stages
       - name: Unit Test
-        run: ./App/gradlew testDebugUnitTest
+        run: ./gradlew android
 
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
@@ -25,12 +25,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: gradle/gradle-build-action@v1
-        with:
-          arguments: build
-          build-root-directory: ./App
-          gradle-executable: ./App/gradlew
-          
+
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -56,7 +51,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           
-        run: ./App/gradlew build sonarqube --info
+        run: ./gradlew build sonarqube --info
     
   gradle:
     strategy:
