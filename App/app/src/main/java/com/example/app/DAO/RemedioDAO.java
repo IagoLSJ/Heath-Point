@@ -1,5 +1,6 @@
 package com.example.app.DAO;
 
+import com.example.app.Homeuser;
 import com.example.app.model.Remedio;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -16,18 +17,20 @@ import java.util.Map;
 
 public class RemedioDAO implements RemedioDAOInterface{
     private static RemedioDAO dao = null;
+    private static Homeuser home;
     private FirebaseFirestore db;
 
     ArrayList<Remedio> lista;
 
-    private RemedioDAO(){
+    private RemedioDAO(Homeuser home){
+        RemedioDAO.home = home;
         lista = new ArrayList<>();
     }
 
     public static RemedioDAO getInstance() {
 
         if( dao == null ){
-            dao = new RemedioDAO();
+            dao = new RemedioDAO(home);
         }
         return dao;
     }
@@ -103,6 +106,7 @@ public class RemedioDAO implements RemedioDAOInterface{
                         } else {
                             System.out.println("Erro na consulta");
                         }
+                        Homeuser.notifyAdapter();
                     }
                 });
         return remedios;

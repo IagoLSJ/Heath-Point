@@ -13,6 +13,6 @@ plugins {
 
 sonarqube {
   properties {
-    property "sonar.projectKey", "teste"
+    property 'sonar.projectKey', 'teste'
   }
 }

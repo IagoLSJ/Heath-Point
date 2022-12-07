@@ -49,6 +49,7 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
      RemedioAdpter adpter;
      Button btnCuidador;
      RemedioDAO dao;
+    static RemedioAdpter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,31 +60,6 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
         dao.init();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         User user = new User();
-        FirebaseFirestore.getInstance().collection("medicine")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    public void onComplete(Task<QuerySnapshot> task ) {
-                        if (task.isSuccessful()) {
-
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                String nome = document.getString( "nome");
-                                String descricao = document.getString( "descricao" );
-                                String hora = document.getString( "hora" );
-                                String dia = document.getString( "dia" );
-                                String userId = document.getString( "userId" );
-
-                                Remedio r = new Remedio( userId, nome, descricao, hora, dia );
-                                r.setUUID(document.getId());
-                                remedios.add(r);
-
-                            }
-                        } else {
-                            System.out.println("Erro na consulta");
-                        }
-                    }
-                });
-
         remedios.add(new Remedio("fnoiewnfoiwnfoenfowneonfownf", "Teste", "remedio pra rato", "12","segunda"));
 
         seg = (RecyclerView) findViewById(R.id.seg);
@@ -119,7 +95,9 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
             }
         });
     }
-
+    public static void notifyAdapter(){
+        adapter.notifyDataSetChanged();
+    }
     public void Idosos(String userId){
         final String[] cpfCuidador = new String[1];
        FirebaseFirestore.getInstance().collection("users").whereEqualTo("userId", userId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
