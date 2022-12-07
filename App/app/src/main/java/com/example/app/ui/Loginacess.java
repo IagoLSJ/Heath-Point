@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.app.Homeuser;
@@ -24,6 +25,7 @@ public class Loginacess extends AppCompatActivity {
     private EditText ETemail, ETsenha;
     private TextView msgError;
     private Button btn, btnConta;
+    private Switch caregiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

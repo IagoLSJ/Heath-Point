@@ -1,12 +1,23 @@
 package com.example.app.model;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
-    private final String uuid;
-    private final String nome;
-    private final String cpf;
-    private final String email;
-    private final String password;
-    private final  boolean isCaregiver;
+    private  String uuid;
+    private  String nome;
+    private  String cpf;
+    private  String email;
+    private  String password;
+    private   boolean isCaregiver;
 
     public User(String uuid, String nome, String cpf, String email, String password, boolean isCaregiver) {
         this.uuid = uuid;
@@ -16,6 +27,8 @@ public class User {
         this.password = password;
         this.isCaregiver = isCaregiver;
     }
+
+    public User(){}
 
     public String getUuid() {
         return uuid;
@@ -38,4 +51,7 @@ public class User {
     }
 
     public boolean getIsCaregiver() {return isCaregiver; }
+
+
+
 }

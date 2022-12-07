@@ -7,24 +7,229 @@
     android:background="#244261"
     tools:context=".Homeuser">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        android:orientation="horizontal"
+    <HorizontalScrollView
+        android:id="@+id/scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="24dp"
+        android:foregroundGravity="right"
+        app:layout_constraintBottom_toTopOf="@+id/btnCuidador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10">
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ListRemedios"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="307dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/view_shape_add" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20px"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/txtSeg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:background="@drawable/textviewcarddayweek"
+                    android:padding="5px"
+                    android:text="Segunda"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/seg"
+                    android:layout_width="match_parent"
+                    android:layout_height="307dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/view_shape_add" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20px"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/txtTer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:background="@drawable/textviewcarddayweek"
+                    android:padding="5px"
+                    android:text="Terça"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="307dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/view_shape_add"
+                    android:gravity="right">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20px"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/txtQua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:background="@drawable/textviewcarddayweek"
+                    android:padding="5px"
+                    android:text="Quarta"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/qua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="307dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/view_shape_add"
+                    android:gravity="right" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20px"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/txtQui"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:background="@drawable/textviewcarddayweek"
+                    android:padding="5px"
+                    android:text="Quinta"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/qui"
+                    android:layout_width="wrap_content"
+                    android:layout_height="307dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/view_shape_add"
+                    android:gravity="right">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20px"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/txtSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:background="@drawable/textviewcarddayweek"
+                    android:padding="5px"
+                    android:text="Sexta"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="307dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/view_shape_add"
+                    android:gravity="right|fill_horizontal">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20px"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/txtSab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:background="@drawable/textviewcarddayweek"
+                    android:padding="5px"
+                    android:text="Sabado"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="307dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/view_shape_add">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20px"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/txtDom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:background="@drawable/textviewcarddayweek"
+                    android:padding="5px"
+                    android:text="Domingo"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="307dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/view_shape_add">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <ImageView
         android:id="@+id/imageView10"
@@ -77,5 +282,18 @@
       >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <Spinner
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/backtextperfil"
+        android:prompt="@string/spennerTitle"
+        android:spinnerMode="dropdown"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/scroll"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,11 +3,12 @@ package com.example.app.model;
 import java.util.ArrayList;
 
 public class Remedio {
-    private final String userId;
-    private final String nome;
-    private final String descricao;
-    private final String Horario;
-    private final String Dia;
+    private  String UUID;
+    private  String userId;
+    private  String nome;
+    private  String descricao;
+    private  String Horario;
+    private  String Dia;
 
     public Remedio(String userId, String nome, String descricao, String horario, String dia) {
         this.userId = userId;
@@ -17,30 +18,59 @@ public class Remedio {
         Dia = dia;
     }
 
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+
     public String getUserId() {
         return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getNome() {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getDescricao() {
         return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getHorario() {
         return Horario;
     }
 
+    public void setHorario(String horario) {
+        Horario = horario;
+    }
+
     public String getDia() {
         return Dia;
+    }
+
+    public void setDia(String dia) {
+        Dia = dia;
     }
 
     @Override
     public String toString() {
         return "Remedio{" +
-                "userId='" + userId + '\'' +
+                "UUID='" + UUID + '\'' +
+                ", userId='" + userId + '\'' +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", Horario='" + Horario + '\'' +

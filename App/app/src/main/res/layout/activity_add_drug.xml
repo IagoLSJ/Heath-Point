@@ -102,19 +102,19 @@
         android:hint="Horário"
         />
 
-    <EditText
+    <Spinner
         android:id="@+id/input_dia"
         android:layout_width="290dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:inputType="date"
         android:background="@drawable/backtextperfil"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintTop_toBottomOf="@id/input_horario"
         app:layout_constraintLeft_toLeftOf="@id/view"
         app:layout_constraintRight_toRightOf="@id/view"
-        android:hint="Dia"
+        android:spinnerMode="dropdown"
+        android:prompt="@string/spennerTitle"
         />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn"

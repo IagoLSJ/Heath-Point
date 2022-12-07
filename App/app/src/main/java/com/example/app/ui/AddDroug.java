@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.app.Homeuser;
 import com.example.app.PerfilannyUser;
@@ -24,11 +27,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.checkerframework.common.subtyping.qual.Bottom;
 
-public class AddDroug extends AppCompatActivity {
+public class AddDroug extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+{
     private String nome;
     private String descricao;
     private String horario;
-    private String dia;
+
     private Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +41,19 @@ public class AddDroug extends AppCompatActivity {
         getSupportActionBar().hide();
         menu();
         btn = findViewById(R.id.btn);
-
+        final Spinner dia = ((Spinner) findViewById(R.id.input_dia));
+        dia.setOnItemSelectedListener(this);
+        String[] items = new String[]{"Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dia.setAdapter(adapter);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nome = ((EditText) findViewById(R.id.input_name)).getText().toString();
                 descricao = ((EditText) findViewById(R.id.input_descricao)).getText().toString();
                 horario = ((EditText) findViewById(R.id.input_horario)).getText().toString();
-                dia = ((EditText) findViewById(R.id.input_dia)).getText().toString();
-
-                Remedio remedio = new Remedio(FirebaseAuth.getInstance().getCurrentUser().getUid(), nome,descricao,horario,dia);
+                Remedio remedio = new Remedio(FirebaseAuth.getInstance().getCurrentUser().getUid(), nome,descricao,horario,dia.getSelectedItem().toString());
 
                 FirebaseFirestore.getInstance().collection("medicine").add(remedio).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
@@ -59,6 +66,7 @@ public class AddDroug extends AppCompatActivity {
             }
         });
     }
+
 
     public void menu() {
         BottomNavigationView menu;
@@ -84,5 +92,15 @@ public class AddDroug extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String item = adapterView.getItemAtPosition(i).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

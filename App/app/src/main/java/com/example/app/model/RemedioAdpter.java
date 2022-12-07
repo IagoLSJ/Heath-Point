@@ -34,7 +34,8 @@ public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RemedioViewHolder holder, int position) {
         Remedio remedio = remedios.get(position);
-
+        holder.nome.setText(remedio.getNome());
+        holder.hora.setText(remedio.getHorario());
 
     }
 

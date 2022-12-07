@@ -9,12 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.app.R;
-import com.example.app.model.Remedio;
 import com.example.app.model.RemedioAdpter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import com.example.app.ui.CreateMedicine;
 
 public class listMedicine extends AppCompatActivity {
     private RecyclerView list;
@@ -26,7 +22,7 @@ public class listMedicine extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_medicine);
         getSupportActionBar().hide();
-        list = (RecyclerView) findViewById(R.id.ListRemedios);
+        list = (RecyclerView) findViewById(R.id.seg);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         list.setLayoutManager(layoutManager);

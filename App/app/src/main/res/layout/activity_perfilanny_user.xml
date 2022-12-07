@@ -36,18 +36,38 @@
         android:id="@+id/imageView16"
         android:layout_width="336dp"
         android:layout_height="416dp"
+        android:foregroundGravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/intobackperfilpng" />
 
+    <EditText
+        android:id="@+id/input_cpf_idoso"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:background="@drawable/backtextperfil"
+        android:hint="CPF do Idoso"
+        android:inputType="number"
+        android:visibility="invisible"
+        android:paddingLeft="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+        app:layout_constraintEnd_toEndOf="@+id/imageView16"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="@+id/imageView16"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+        app:layout_constraintVertical_bias="0.552" />
+
     <TextView
         android:id="@+id/textInputEditText"
         android:layout_width="290dp"
         android:layout_height="30dp"
         android:background="@drawable/backtextperfil"
-        android:hint="  Nome"
+        android:hint="Nome"
+        android:paddingLeft="5dp"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
@@ -63,10 +83,10 @@
         android:layout_height="30dp"
         android:background="@drawable/backtextperfil"
         android:ems="10"
-        android:hint="  000.000.000-00"
         android:inputType="number"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
+        android:paddingLeft="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
         app:layout_constraintHorizontal_bias="0.478"
@@ -84,25 +104,13 @@
         android:inputType="textEmailAddress"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
+        android:paddingLeft="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber2"
         app:layout_constraintVertical_bias="0.066" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonfecharperfil"
-        android:layout_width="107dp"
-        android:layout_height="29dp"
-        android:background="@drawable/buttonfechar"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintEnd_toEndOf="@+id/imageView16"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
-        app:layout_constraintVertical_bias="0.938" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu"
@@ -118,5 +126,30 @@
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_add_new_old_man"
+        android:textColor="@color/white"
+        android:text="Adicionar"
+        android:layout_marginRight="20px"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+        app:layout_constraintEnd_toEndOf="@+id/imageView16"
+        app:layout_constraintTop_toBottomOf="@+id/input_cpf_idoso" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Adicionar Idoso"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/input_cpf_idoso"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
