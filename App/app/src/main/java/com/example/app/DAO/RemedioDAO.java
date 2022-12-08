@@ -1,7 +1,12 @@
 package com.example.app.DAO;
 
+import android.app.Activity;
+import android.content.Context;
+
+import com.example.app.EditCard;
 import com.example.app.Homeuser;
 import com.example.app.model.Remedio;
+import com.example.app.ui.AddDroug;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,8 +47,8 @@ public class RemedioDAO implements RemedioDAOInterface{
         remedio.put("userId", r.getUserId());
         remedio.put("nome", r.getNome() );
         remedio.put("descricao", r.getDescricao() );
-        remedio.put( "horario", r.getHorario() );
-        remedio.put( "dia", r.getDia() );
+        remedio.put("horario", r.getHorario() );
+        remedio.put("dia", r.getDia() );
 
         db.collection("medicine")
                 .add(remedio)
@@ -66,11 +71,90 @@ public class RemedioDAO implements RemedioDAOInterface{
 
     @Override
     public boolean editRemedio(Remedio r) {
+        DocumentReference newRemedio = db.collection("medicine")
+                .document(r.getUUID());
+        newRemedio.update("nome", r.getNome(),
+                        "descricao", r.getDescricao(),
+                        "horario", r.getHorario(),
+                        "dia", r.getDia(),
+                        "userId", r.getUserId() )
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess( Void aVoid  ) {
+
+                        for( Remedio remedio : lista ){
+
+                            if( remedio.getUUID().equals( r.getUUID() ) ){
+                                remedio.setNome( r.getNome() );
+                                remedio.setDescricao( r.getDescricao() );
+                                remedio.setHorario( r.getHorario());
+                                remedio.setDia( r.getDia() );
+                                remedio.setUserId( r.getUserId() );
+
+                                AddDroug.notifyAdapter();
+
+                                break;
+
+                            }
+                        }
+
+                        AddDroug.notifyAdapter();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure( Exception e) {
+
+                        AddDroug.notifyAdapter();
+                    }
+                });
         return false;
     }
 
     @Override
-    public boolean deleteRemedio(int remedioId) {
+    public boolean deleteRemedio(String remedioId) {
+
+        Remedio r = null;
+
+        for( Remedio remedio : lista ){
+            if( remedio.getUUID().equals(remedioId)){
+                r = remedio;
+                break;
+            }
+        }
+
+        if( r != null ){
+
+            final Remedio deletar = r;
+
+            DocumentReference deletarRemedio = db.collection("medicine").document( r.getUUID() );
+            deletarRemedio.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Remedio remedioDeletar = null;
+                            for( Remedio remedio : lista ){
+
+                                if( remedio.getUUID().equals( deletar.getUUID() ) ){
+                                    remedioDeletar = remedio;
+                                    break;
+                                }
+
+                            }
+
+                            if( remedioDeletar != null ) lista.remove( remedioDeletar );
+                            EditCard.notifyAdapter();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure( Exception e) {
+
+
+                        }
+                    });
+
+        }
+
         return false;
     }
 
@@ -101,9 +185,8 @@ public class RemedioDAO implements RemedioDAOInterface{
                                 String userId = document.getString( "userId" );
 
                                 Remedio r = new Remedio( userId, nome, descricao, hora, dia );
-                                r.setUUID(document.getId());
-                                remedios.add(r);
 
+                                remedios.add(r);
                             }
                         }
                         home.notifyAdapter();

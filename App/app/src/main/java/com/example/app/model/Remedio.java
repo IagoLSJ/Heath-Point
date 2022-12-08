@@ -3,12 +3,12 @@ package com.example.app.model;
 import java.util.ArrayList;
 
 public class Remedio {
-    private  String UUID;
-    private  String userId;
-    private  String nome;
-    private  String descricao;
-    private  String Horario;
-    private  String Dia;
+    private String UUID;
+    private String userId;
+    private String nome;
+    private String descricao;
+    private String Horario;
+    private String Dia;
 
     public Remedio(String userId, String nome, String descricao, String horario, String dia) {
         this.userId = userId;
@@ -66,15 +66,4 @@ public class Remedio {
         Dia = dia;
     }
 
-    @Override
-    public String toString() {
-        return "Remedio{" +
-                "UUID='" + UUID + '\'' +
-                ", userId='" + userId + '\'' +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", Horario='" + Horario + '\'' +
-                ", Dia='" + Dia + '\'' +
-                '}';
-    }
 }

@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public interface UserInterface {
     static UserInterface getInstance(Context context) { return null;}
 
-    boolean addUser(User u);
-    boolean editUser(User u);
+    boolean addUser(Idoso u);
+    boolean editUser(Idoso u);
 
-    User getUser(String userId);
+    Idoso getUser(String userId);
     boolean login(String email, String password);
     String getAuthUser();
     boolean init();

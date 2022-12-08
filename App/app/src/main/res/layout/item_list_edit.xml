@@ -29,4 +29,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/hora"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/edit"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintLeft_toRightOf="@+id/remedio"
+                app:layout_constraintRight_toLeftOf="@+id/delete"
+                android:layout_marginLeft="10dp"
+                tools:ignore="MissingConstraints" />
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_baseline_delete_24"
+        app:layout_constraintLeft_toRightOf="@+id/edit"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

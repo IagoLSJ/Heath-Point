@@ -13,7 +13,7 @@ public interface RemedioDAOInterface {
 
     boolean addRemedio( Remedio r );
     boolean editRemedio( Remedio r );
-    boolean deleteRemedio( int remedioId );
+    boolean deleteRemedio( String remedioId );
 
     Remedio getRemedio( String remedioId);
 

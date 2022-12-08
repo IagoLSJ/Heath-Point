@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.app.R;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
     private ArrayList<Remedio> remedios;
 
 
-    public RemedioAdpter(  ArrayList<Remedio> remedios) {
+
+    public RemedioAdpter(   ArrayList<Remedio> remedios) {
         this.remedios = remedios;
     }
 
@@ -36,7 +38,6 @@ public class RemedioAdpter extends RecyclerView.Adapter<RemedioViewHolder> {
         Remedio remedio = remedios.get(position);
         holder.nome.setText(remedio.getNome());
         holder.hora.setText(remedio.getHorario());
-
     }
 
     @Override

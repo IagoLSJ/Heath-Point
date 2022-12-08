@@ -11,24 +11,21 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public abstract class User {
     private  String uuid;
     private  String nome;
     private  String cpf;
     private  String email;
     private  String password;
-    private   boolean isCaregiver;
+    private String documentId;
 
-    public User(String uuid, String nome, String cpf, String email, String password, boolean isCaregiver) {
+    public User(String uuid, String nome, String cpf, String email, String password) {
         this.uuid = uuid;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.password = password;
-        this.isCaregiver = isCaregiver;
     }
-
-    public User(){}
 
     public String getUuid() {
         return uuid;
@@ -50,8 +47,11 @@ public class User {
         return password;
     }
 
-    public boolean getIsCaregiver() {return isCaregiver; }
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
 
-
-
+    public String getDocumentId() {
+        return documentId;
+    }
 }

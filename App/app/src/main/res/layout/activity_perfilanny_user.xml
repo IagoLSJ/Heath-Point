@@ -21,9 +21,9 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonconperfil"
-        android:layout_width="32dp"
-        android:layout_height="12dp"
-        android:background="@drawable/butconfcomp19"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/ic_baseline_logout_24"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

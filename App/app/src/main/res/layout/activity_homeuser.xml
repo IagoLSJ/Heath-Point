@@ -21,11 +21,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSeg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -42,10 +43,18 @@
                     android:text="Segunda"
                     android:textColor="@color/black" />
 
+                <ImageView
+                    android:id="@+id/btn_edit_seg"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    android:layout_gravity="right"
+                    />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/seg"
-                    android:layout_width="match_parent"
-                    android:layout_height="307dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="16dp"
@@ -53,6 +62,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardTer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -68,7 +78,13 @@
                     android:padding="5px"
                     android:text="Terça"
                     android:textColor="@color/black" />
-
+                <ImageView
+                    android:id="@+id/btn_edit_ter"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    android:layout_gravity="right"
+                    />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/ter"
                     android:layout_width="wrap_content"
@@ -83,6 +99,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardQua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -98,7 +115,13 @@
                     android:padding="5px"
                     android:text="Quarta"
                     android:textColor="@color/black" />
-
+                <ImageView
+                    android:id="@+id/btn_edit_qua"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    android:layout_gravity="right"
+                    />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/qua"
                     android:layout_width="wrap_content"
@@ -111,6 +134,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardQui"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -126,7 +150,13 @@
                     android:padding="5px"
                     android:text="Quinta"
                     android:textColor="@color/black" />
-
+                <ImageView
+                    android:id="@+id/btn_edit_qui"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    android:layout_gravity="right"
+                    />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/qui"
                     android:layout_width="wrap_content"
@@ -141,6 +171,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -156,7 +187,13 @@
                     android:padding="5px"
                     android:text="Sexta"
                     android:textColor="@color/black" />
-
+                <ImageView
+                    android:id="@+id/btn_edit_sex"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    android:layout_gravity="right"
+                    />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/sex"
                     android:layout_width="wrap_content"
@@ -171,6 +208,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -186,7 +224,13 @@
                     android:padding="5px"
                     android:text="Sabado"
                     android:textColor="@color/black" />
-
+                <ImageView
+                    android:id="@+id/btn_edit_sab"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    android:layout_gravity="right"
+                    />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/sab"
                     android:layout_width="wrap_content"
@@ -200,6 +244,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardDom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -215,7 +260,13 @@
                     android:padding="5px"
                     android:text="Domingo"
                     android:textColor="@color/black" />
-
+                <ImageView
+                    android:id="@+id/btn_edit_dom"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    android:layout_gravity="right"
+                    />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/dom"
                     android:layout_width="wrap_content"

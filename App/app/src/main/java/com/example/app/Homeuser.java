@@ -4,6 +4,7 @@ import static com.google.android.gms.tasks.Tasks.await;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.collection.ArraySet;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.os.AsyncTask;
 import android.widget.Spinner;
@@ -47,28 +49,42 @@ import java.util.concurrent.ExecutionException;
 
 public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
      RecyclerView seg, ter,qua,qui,sex,sab,dom;
+     ImageView btnEditSeg, btnEditTer, btnEditQua,btnEditQui, btnEditSex,btnEditSab, btnEditDom;
      Button btnCuidador;
      RemedioDAOInterface dao;
-     ArrayList<Remedio> remedios = new ArrayList<>();
-    static RemedioAdpter adapter;
+     ArrayList<Remedio> remediosSeg, remediosTer, remediosQua, remediosQui, remediosSex, remediosSab, remediosDom = new ArrayList<>();
+    static RemedioAdpter adapter, adapterSeg, adapterTer, adapterQua, adapterQui, adapterSex, adapterSab, adapterDom;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeuser);
         getSupportActionBar().hide();
+
         dao = RemedioDAO.getInstance(this);
         dao.init();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        User user = new User();
-        seg = (RecyclerView) findViewById(R.id.seg);
-        ter = (RecyclerView) findViewById(R.id.ter);
-        qua = (RecyclerView) findViewById(R.id.qua);
-        qui = (RecyclerView) findViewById(R.id.qui);
-        sex = (RecyclerView) findViewById(R.id.sex);
-        sab = (RecyclerView) findViewById(R.id.sab);
-        dom = (RecyclerView) findViewById(R.id.dom);
+
+        seg = findViewById(R.id.seg);
+        ter = findViewById(R.id.ter);
+        qua = findViewById(R.id.qua);
+        qui = findViewById(R.id.qui);
+        sex =  findViewById(R.id.sex);
+        sab =  findViewById(R.id.sab);
+        dom =  findViewById(R.id.dom);
+
         btnCuidador = findViewById(R.id.btnCuidador);
+
+        btnEditSeg = findViewById(R.id.btn_edit_seg);
+        btnEditTer = findViewById(R.id.btn_edit_ter);
+        btnEditQua = findViewById(R.id.btn_edit_qua);
+        btnEditQui = findViewById(R.id.btn_edit_qui);
+        btnEditSex = findViewById(R.id.btn_edit_sex);
+        btnEditSab = findViewById(R.id.btn_edit_sab);
+        btnEditDom = findViewById(R.id.btn_edit_dom);
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
         seg.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         ter.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         qua.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -76,16 +92,32 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
         sex.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         sab.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         dom.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
         menu();
-        remedios = dao.getListaRemedios(userId, "Segunda");
-        adapter = new RemedioAdpter(remedios);
-        seg.setAdapter(adapter);
-        ter.setAdapter(adapter);
-        qua.setAdapter(adapter);
-        qui.setAdapter(adapter);
-        sex.setAdapter(adapter);
-        sab.setAdapter(adapter);
-        dom.setAdapter(adapter);
+
+        remediosSeg = dao.getListaRemedios(userId, "Segunda");
+        remediosTer = dao.getListaRemedios(userId, "Terça");
+        remediosQua = dao.getListaRemedios(userId, "Quarta");
+        remediosQui = dao.getListaRemedios(userId, "Quinta");
+        remediosSex = dao.getListaRemedios(userId, "Sexta");
+        remediosSab = dao.getListaRemedios(userId, "Sabado");
+        remediosDom = dao.getListaRemedios(userId, "Domingo");
+
+        adapterSeg = new RemedioAdpter(remediosSeg);
+        adapterTer = new RemedioAdpter(remediosTer);
+        adapterQua = new RemedioAdpter(remediosQua);
+        adapterQui = new RemedioAdpter(remediosQui);
+        adapterSex = new RemedioAdpter(remediosSex);
+        adapterSab = new RemedioAdpter(remediosSab);
+        adapterDom = new RemedioAdpter(remediosDom);
+
+        seg.setAdapter(adapterSeg);
+        ter.setAdapter(adapterTer);
+        qua.setAdapter(adapterQua);
+        qui.setAdapter(adapterQui);
+        sex.setAdapter(adapterSex);
+        sab.setAdapter(adapterSab);
+        dom.setAdapter(adapterDom);
 
         btnCuidador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +125,76 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
 //                startActivity(new Intent(getApplicationContext(), .class));
             }
         });
+
+        btnEditSeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditCard.class);
+                intent.putExtra("dia", "Segunda");
+                startActivity(intent);
+            }
+        });
+
+        btnEditTer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditCard.class);
+                intent.putExtra("dia", "Terça");
+                startActivity(intent);
+            }
+        });
+
+        btnEditQua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditCard.class);
+                intent.putExtra("dia", "Quart");
+                startActivity(intent);
+            }
+        });
+
+        btnEditQui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditCard.class);
+                intent.putExtra("dia", "Quinta");
+                startActivity(intent);
+            }
+        });
+
+        btnEditSex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditCard.class);
+                intent.putExtra("dia", "Sexta");
+                startActivity(intent);
+            }
+        });
+
+        btnEditSab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditCard.class);
+                intent.putExtra("dia", "Sábado");
+                startActivity(intent);
+            }
+        });
+
+        btnEditDom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditCard.class);
+                intent.putExtra("dia", "Domingo");
+                startActivity(intent);
+            }
+        });
+
     }
 
     public static void notifyAdapter(){
-        adapter.notifyDataSetChanged();
+        adapterSeg.notifyDataSetChanged();
     }
+
     public void menu() {
         BottomNavigationView menu;
         menu = findViewById(R.id.menu);
@@ -120,35 +217,6 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
                 return false;
             }
         });
-    }
-
-
-    public ArrayList<Remedio> getRemedios(String userId){
-        ArrayList<Remedio> remedios = new ArrayList<>();
-
-        FirebaseFirestore.getInstance().collection("users").whereEqualTo("userId", userId)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
-                    public void onComplete( Task<QuerySnapshot> task ) {
-                        if (task.isSuccessful()) {
-
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String userId = document.getString( "userId" );
-                                String nome = document.getString( "nome");
-                                String descricao = document.getString( "descricao" );
-                                String horario = document.getString( "horario" );
-                                String dia = document.getString( "dia" );
-                                Remedio r = new Remedio( userId, nome, descricao, horario, dia );
-                                remedios.add( r );
-                            }
-                        } else {
-                            Log.w("TAG", "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-
-        return remedios;
     }
 
     @Override

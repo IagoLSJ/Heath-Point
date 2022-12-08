@@ -13,6 +13,8 @@ import android.widget.Switch;
 
 import com.example.app.Homeuser;
 import com.example.app.R;
+import com.example.app.model.Cuidador;
+import com.example.app.model.Idoso;
 import com.example.app.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -76,11 +78,21 @@ public class Logincadastro extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    User user = new User(uuid, nome, cpf, email.toLowerCase(Locale.ROOT), password, caregiver.isChecked());
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    db.collection("users").add(user);
+                    if (caregiver.isChecked()){
+                        Cuidador cuidador = new Cuidador(uuid, nome, cpf, email.toLowerCase(Locale.ROOT), password);
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("cuidador").add(cuidador);
+                        startActivity(new Intent(getApplicationContext(), Homeuser.class));
+                    }else{
+                        Idoso idoso = new Idoso(uuid, nome, cpf, email.toLowerCase(Locale.ROOT), password);
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        System.out.println(idoso.toString());
+                        db.collection("idoso").add(idoso);
 
-                    startActivity(new Intent(getApplicationContext(), Homeuser.class));
+                        startActivity(new Intent(getApplicationContext(), Homeuser.class));
+                    }
+
+
                 }
             }
         });
