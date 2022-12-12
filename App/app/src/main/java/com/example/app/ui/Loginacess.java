@@ -64,6 +64,10 @@ public class Loginacess extends AppCompatActivity {
         if(password.isEmpty()){
             this.ETsenha.setError("Este campo é obrigatório");
         }
+        FirebaseUser userAuth = FirebaseAuth.getInstance().getCurrentUser();
+        if (userAuth != null){
+            startActivity(new Intent(getApplicationContext(), Homeuser.class));
+        }
         try {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email.toLowerCase(Locale.ROOT), password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override

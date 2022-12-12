@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RemedioDAO implements RemedioDAOInterface{
+public class RemedioDAO {
     private static RemedioDAO dao = null;
     private static Homeuser home;
     private FirebaseFirestore db;
@@ -40,7 +40,7 @@ public class RemedioDAO implements RemedioDAOInterface{
         return dao;
     }
 
-    @Override
+
     public boolean addRemedio(Remedio r) {
 
         Map<String, Object> remedio = new HashMap<>();
@@ -69,7 +69,7 @@ public class RemedioDAO implements RemedioDAOInterface{
         return true;
     }
 
-    @Override
+
     public boolean editRemedio(Remedio r) {
         DocumentReference newRemedio = db.collection("medicine")
                 .document(r.getUUID());
@@ -97,8 +97,6 @@ public class RemedioDAO implements RemedioDAOInterface{
 
                             }
                         }
-
-                        AddDroug.notifyAdapter();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -111,12 +109,13 @@ public class RemedioDAO implements RemedioDAOInterface{
         return false;
     }
 
-    @Override
-    public boolean deleteRemedio(String remedioId) {
+
+    public boolean deleteRemedio(String remedioId, ArrayList<Remedio> lista) {
 
         Remedio r = null;
 
         for( Remedio remedio : lista ){
+            System.out.println("Rmedio objeto: " + remedio.getUUID() + " UUID: " + remedioId);
             if( remedio.getUUID().equals(remedioId)){
                 r = remedio;
                 break;
@@ -158,12 +157,12 @@ public class RemedioDAO implements RemedioDAOInterface{
         return false;
     }
 
-    @Override
+
     public Remedio getRemedio(String remedioId) {
         return null;
     }
 
-    @Override
+
     public ArrayList<Remedio> getListaRemedios(String userId, String dia) {
         ArrayList<Remedio> remedios = new ArrayList<Remedio>();
 
@@ -195,23 +194,23 @@ public class RemedioDAO implements RemedioDAOInterface{
         return remedios;
     }
 
-    @Override
+
     public boolean deleteAll() {
         return false;
     }
 
-    @Override
+
     public boolean init() {
         if( db == null ) db = FirebaseFirestore.getInstance();
         return true;
     }
 
-    @Override
+
     public boolean close() {
         return false;
     }
 
-    @Override
+
     public boolean isStarted() {
         return false;
     }

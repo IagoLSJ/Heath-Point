@@ -10,9 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.app.DAO.RemedioDAO;
-import com.example.app.DAO.RemedioDAOInterface;
 import com.example.app.model.Remedio;
-import com.example.app.model.RemedioAdpter;
 import com.example.app.model.RemedioEditAdpter;
 import com.example.app.ui.AddDroug;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +19,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,7 +28,7 @@ import java.util.ArrayList;
 public class EditCard extends AppCompatActivity {
     static RemedioEditAdpter adapter;
      RecyclerView lista;
-    RemedioDAOInterface dao;
+    RemedioDAO dao;
     private Homeuser home;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ArrayList<Remedio> remedios = new ArrayList<>();
@@ -72,11 +69,13 @@ public class EditCard extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.homeId:
-                    case R.id.searchId:
                         startActivity(new Intent(getApplicationContext(), Homeuser.class));
                         break;
                     case R.id.addId:
                         startActivity(new Intent(getApplicationContext(), AddDroug.class));
+                        break;
+                    case R.id.searchId:
+                        startActivity(new Intent(getApplicationContext(), Maps.class));
                         break;
                     case R.id.profileId:
                         startActivity(new Intent(getApplicationContext(), PerfilannyUser.class));
@@ -94,13 +93,14 @@ public class EditCard extends AppCompatActivity {
         i.putExtra("Remedio.descricao",r.getDescricao());
         i.putExtra("Remedio.horario",r.getHorario());
         i.putExtra("Remedio.dia",r.getDia());
+        i.putExtra("Remedio.uuid", r.getUUID());
 
         startActivity(i);
 
     }
 
     public void delete(Remedio r){
-       dao.deleteRemedio(r.getUUID());
+       dao.deleteRemedio(r.getUUID(), remedios);
        notifyAdapter();
         Snackbar.make(findViewById(R.id.menu), "Remedio deletado com sucesso",
                         Snackbar.LENGTH_SHORT)
@@ -126,7 +126,6 @@ public class EditCard extends AppCompatActivity {
                                 String hora = document.getString( "horario" );
                                 String dia = document.getString( "dia" );
                                 String userId = document.getString( "userId" );
-
                                 Remedio r = new Remedio( userId, nome, descricao, hora, dia );
                                 r.setUUID(document.getId());
                                 remedios.add(r);

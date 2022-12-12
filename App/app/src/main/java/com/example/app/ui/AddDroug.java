@@ -14,22 +14,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.app.DAO.RemedioDAO;
-import com.example.app.DAO.RemedioDAOInterface;
+import com.example.app.Maps;
 import com.example.app.Homeuser;
 import com.example.app.PerfilannyUser;
 import com.example.app.R;
 import com.example.app.model.Remedio;
 import com.example.app.model.RemedioEditAdpter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import org.checkerframework.common.subtyping.qual.Bottom;
 
 public class AddDroug extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
@@ -39,7 +33,7 @@ public class AddDroug extends AppCompatActivity implements AdapterView.OnItemSel
     private String horario;
     private Button btn;
     private Homeuser home;
-    RemedioDAOInterface dao;
+    RemedioDAO dao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +48,13 @@ public class AddDroug extends AppCompatActivity implements AdapterView.OnItemSel
         EditText descricaoET =  findViewById(R.id.input_descricao);
         EditText horarioET = findViewById(R.id.input_horario);
         final Spinner dia = ((Spinner) findViewById(R.id.input_dia));
+        String UUID = null;
         if(getIntent().hasExtra("Remedio.dia")) {
             Bundle extras = getIntent().getExtras();
             nomeET.setText(extras.get("Remedio.nome").toString());
             descricaoET.setText(extras.get("Remedio.descricao").toString());
             horarioET.setText(extras.get("Remedio.horario").toString());
+            UUID = extras.get("Remedio.uuid").toString();
             isEdit = true;
             btn.setText("Editar");
         }
@@ -71,6 +67,7 @@ public class AddDroug extends AppCompatActivity implements AdapterView.OnItemSel
         dia.setAdapter(adapter);
 
         boolean finalIsEdit = isEdit;
+        String finalUUID = UUID;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,8 +78,10 @@ public class AddDroug extends AppCompatActivity implements AdapterView.OnItemSel
                     Snackbar.make(findViewById(R.id.menu), "Preencha todos os campos",
                                     Snackbar.LENGTH_SHORT)
                             .show();
+                    return;
                 }
                 Remedio remedio = new Remedio(FirebaseAuth.getInstance().getCurrentUser().getUid(), nome,descricao,horario,dia.getSelectedItem().toString());
+                remedio.setUUID(finalUUID);
                if (finalIsEdit){
                    dao.editRemedio(remedio);
                    startActivity(new Intent(getApplicationContext(), Homeuser.class));
@@ -109,11 +108,11 @@ public class AddDroug extends AppCompatActivity implements AdapterView.OnItemSel
                     case R.id.homeId:
                         startActivity(new Intent(getApplicationContext(), Homeuser.class));
                         break;
-                    case R.id.addId :
+                    case R.id.addId:
                         startActivity(new Intent(getApplicationContext(), AddDroug.class));
                         break;
                     case R.id.searchId:
-                        startActivity(new Intent(getApplicationContext(), Homeuser.class));
+                        startActivity(new Intent(getApplicationContext(), Maps.class));
                         break;
                     case R.id.profileId:
                         startActivity(new Intent(getApplicationContext(), PerfilannyUser.class));

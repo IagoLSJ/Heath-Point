@@ -13,6 +13,7 @@ plugins {
 
 plugins {
   id "org.sonarqube" version "3.5.0.2730"
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
 
 sonarqube {

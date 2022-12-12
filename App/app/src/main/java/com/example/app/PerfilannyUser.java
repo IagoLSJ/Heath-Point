@@ -12,39 +12,33 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.app.model.Idoso;
-import com.example.app.model.TakeCare;
+import com.example.app.model.RemedioAdpter;
 import com.example.app.ui.AddDroug;
 import com.example.app.ui.Loginacess;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.checkerframework.common.subtyping.qual.Bottom;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class PerfilannyUser extends AppCompatActivity {
     private TextView nome, cpf, email, newOldMan;
     private EditText editCPF;
     private Button btn_add, logout;
+    static RemedioAdpter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfilanny_user);
         getSupportActionBar().hide();
         menu();
+        adapter = new RemedioAdpter(null);
         nome = findViewById(R.id.textInputEditText);
         cpf = findViewById(R.id.editTextNumber2);
         email = findViewById(R.id.editTextTextEmailAddress3);
@@ -52,8 +46,9 @@ public class PerfilannyUser extends AppCompatActivity {
         editCPF = findViewById(R.id.input_cpf_idoso);
         btn_add = findViewById(R.id.btn_add);
         logout = findViewById(R.id.buttonconperfil);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore.getInstance().collection("cuidador").whereEqualTo("email", user.getEmail()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        String emailUser = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        FirebaseFirestore.getInstance().collection("cuidador").whereEqualTo("email", emailUser).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
@@ -61,17 +56,33 @@ public class PerfilannyUser extends AppCompatActivity {
                        nome.setText((CharSequence) document.get("nome"));
                        cpf.setText((CharSequence) document.get("cpf"));
                        email.setText((CharSequence) document.get("email"));
-                       if ((boolean)document.get("isCaregiver")){
-                           newOldMan.setVisibility(View.VISIBLE);
-                           editCPF.setVisibility(View.VISIBLE);
-                           btn_add.setVisibility(View.VISIBLE);
-                       }
+                       newOldMan.setVisibility(View.VISIBLE);
+                       editCPF.setVisibility(View.VISIBLE);
+                       btn_add.setVisibility(View.VISIBLE);
+                       notifyAdapter();
+                       break;
                    }
 
                 }
             }
         });
-        FirebaseAuth.getInstance().getCurrentUser().
+
+        FirebaseFirestore.getInstance().collection("idoso").whereEqualTo("email", emailUser).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    for (QueryDocumentSnapshot document: task.getResult()){
+                        nome.setText(document.getString("nome"));
+                        cpf.setText(document.getString("cpf"));
+                        email.setText(document.getString("email"));
+                        notifyAdapter();
+                        break;
+                    }
+
+                }
+            }
+        });
+
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,6 +136,9 @@ public class PerfilannyUser extends AppCompatActivity {
             }
         });
     }
+    public static void notifyAdapter(){
+        adapter.notifyDataSetChanged();
+    }
 
     public void menu() {
         BottomNavigationView menu;
@@ -140,7 +154,7 @@ public class PerfilannyUser extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), AddDroug.class));
                         break;
                     case R.id.searchId:
-                        startActivity(new Intent(getApplicationContext(), Homeuser.class));
+                        startActivity(new Intent(getApplicationContext(), Maps.class));
                         break;
                     case R.id.profileId:
                         startActivity(new Intent(getApplicationContext(), PerfilannyUser.class));

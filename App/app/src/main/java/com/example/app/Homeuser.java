@@ -4,54 +4,34 @@ import static com.google.android.gms.tasks.Tasks.await;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.collection.ArraySet;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.os.AsyncTask;
-import android.widget.Spinner;
 
 import com.example.app.DAO.RemedioDAO;
-import com.example.app.DAO.RemedioDAOInterface;
-import com.example.app.model.Card;
 import com.example.app.model.Remedio;
 import com.example.app.model.RemedioAdpter;
-import com.example.app.model.User;
 import com.example.app.ui.AddDroug;
-import com.example.app.ui.Chat;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
      RecyclerView seg, ter,qua,qui,sex,sab,dom;
      ImageView btnEditSeg, btnEditTer, btnEditQua,btnEditQui, btnEditSex,btnEditSab, btnEditDom;
      Button btnCuidador;
-     RemedioDAOInterface dao;
+     RemedioDAO dao;
      ArrayList<Remedio> remediosSeg, remediosTer, remediosQua, remediosQui, remediosSex, remediosSab, remediosDom = new ArrayList<>();
     static RemedioAdpter adapter, adapterSeg, adapterTer, adapterQua, adapterQui, adapterSex, adapterSab, adapterDom;
     @SuppressLint("MissingInflatedId")
@@ -203,11 +183,13 @@ public class Homeuser extends AppCompatActivity implements AdapterView.OnItemSel
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.homeId:
-                    case R.id.searchId:
                         startActivity(new Intent(getApplicationContext(), Homeuser.class));
                         break;
                     case R.id.addId:
                         startActivity(new Intent(getApplicationContext(), AddDroug.class));
+                        break;
+                    case R.id.searchId:
+                        startActivity(new Intent(getApplicationContext(), Maps.class));
                         break;
                     case R.id.profileId:
                         startActivity(new Intent(getApplicationContext(), PerfilannyUser.class));
